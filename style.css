@@ -1,0 +1,33 @@
+body{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+h2{
+    text-align: center;
+}
+
+label{
+    
+    text-align: right;
+}
+input {
+    width: 150px;
+    display: block;
+}
+
+#save-btn {
+    background-color: rgb(141, 203, 214);
+    border-radius: 2px;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+#column{
+    background-color: rgb(208, 225, 228);
+}
+
+#save-btn:hover {
+    color: blanchedalmond;
+    background-color: rgb(156, 49, 49);
+}
+
