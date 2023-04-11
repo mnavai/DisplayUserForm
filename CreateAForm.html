@@ -3,72 +3,7 @@
 <head>
 	<title>User Details</title>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script>
-		$(document).ready(function() {
-			var editRow = null;
-
-			$('#save-btn').click(function() {
-				var firstName = $('#first-name').val();
-				var lastName = $('#last-name').val();
-				var dob = $('#dob').val();
-                var doj = $('#doj').val();
-
-				if (editRow) {
-					// update existing row
-					editRow.find('td').eq(0).text(firstName);
-					editRow.find('td').eq(1).text(lastName);
-					editRow.find('td').eq(2).text(dob);
-                    editRow.find('td').eq(3).text(doj);
-					editRow = null;
-				} else {
-					// create a new row in the table
-					var newRow = $('<tr>');
-					newRow.append($('<td>').text(firstName));
-					newRow.append($('<td>').text(lastName));
-					newRow.append($('<td>').text(dob));
-                    newRow.append($('<td>').text(doj));
-
-					// add edit button to new row
-					var editBtn = $('<button>').text('Edit');
-					editBtn.click(function() {
-						var row = $(this).closest('tr');
-						var firstName = row.find('td').eq(0).text();
-						var lastName = row.find('td').eq(1).text();
-						var dob = row.find('td').eq(2).text();
-                        var doj = row.find('td').eq(3).text();
-
-						$('#first-name').val(firstName);
-						$('#last-name').val(lastName);
-						$('#dob').val(dob);
-                        $('#doj').val(doj);
-
-						editRow = row;
-						row.remove();
-					});
-					newRow.append($('<td>').append(editBtn));
-
-					// add delete button to new row
-					var deleteBtn = $('<button>').text('Delete');
-					deleteBtn.click(function() {
-						$(this).closest('tr').remove();
-					});
-					newRow.append($('<td>').append(deleteBtn));
-
-					$('#user-table').append(newRow);
-				}
-
-				// clear input fields
-				$('#first-name').val('');
-				$('#last-name').val('');
-				$('#dob').val('');
-                $('#doj').val('');
-			});
-
-			$('#delete-all-btn').click(function() {
-				$('#user-table tbody').empty();
-			});
-		});
-	</script>
+	<script type="text/javascript" src="script.js"></script> 
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -91,7 +26,7 @@
 	</p>
 	<button id="save-btn">Save</button>
     <hr>
-	<table id="user-table" border="1">
+	<table id="user-table">
 		<thead>
 			<tr id="column">
 				<th style="padding:5px" >First Name</th>
@@ -100,7 +35,7 @@
                 <th style="padding:5px">Date of Joining</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody id="result">
 		</tbody>
 	</table>
 </body>

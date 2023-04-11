@@ -7,7 +7,7 @@ h2{
 }
 
 label{
-    
+
     text-align: right;
 }
 input {
@@ -17,7 +17,10 @@ input {
 
 #save-btn {
     background-color: rgb(141, 203, 214);
-    border-radius: 2px;
+    border-radius: 6px;
+    border-color:rgb(141, 203, 214) ;
+    width: 100px;
+    height: 25px;
     margin-left:auto;
     margin-right: auto;
 }
@@ -26,8 +29,20 @@ input {
     background-color: rgb(208, 225, 228);
 }
 
+/* th{
+    font-size: 12px;
+    display: block;
+    float: left;
+} */
+
 #save-btn:hover {
     color: blanchedalmond;
     background-color: rgb(156, 49, 49);
+    border-color:rgb(156, 49, 49) ;
 }
 
+/* #result {
+    font-size: 12px;
+    display: block;
+    float: left;
+} */
