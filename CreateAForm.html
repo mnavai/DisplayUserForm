@@ -1,54 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>User Details</title>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-            $(document).ready(function(){
-                $("#save-btn").click(function(){        
-                    var firstName = $('#first-name').val();
-                    var lastName = $('#last-name').val();
-                    var dob = $('#dob').val();
+<html>
+<head>
+	<title>User Details</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('#save-btn').click(function() {
+				var firstName = $('#first-name').val();
+				var lastName = $('#last-name').val();
+				var dob = $('#dob').val();
 
-                    var newRow = $('<tr>');
-                    newRow.append($('<td>').text(firstName));
-                    newRow.append($('<td>').text(lastName));
-                    newRow.append($('<td>').text(dob));
-                    $('#user-table').append(newRow);
-                });
-            });
-        </script>
-    </head>
-    <body>
-        <h2>User Details</h2>
-        <p>
-            <label>First Name:</label>
-            <input type="text" id="first-name">
-        </p>
-        <p>
-            <label>Last Name:</label>
-            <input type="text" id="last-name">
-        </p>
-        <p>
-            <label>Date of Birth:</label>
-            <input type="date" id="dob">
-        </p>
-        <button id="save-btn">Save</button>
-        <hr>
-        <section>
-            <div>
-                <button type="submit">Edit</button>
-                <button type="submit">Delete</button>
-            </div>
-        </section>
-        <hr>
-        <table id="user-table">
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Date of Birth</th>
-            </tr>
-        </table>
-    </body>
-</html>    
+				// create a new row in the table
+				var newRow = $('<tr>');
+				newRow.append($('<td>').text(firstName));
+				newRow.append($('<td>').text(lastName));
+				newRow.append($('<td>').text(dob));
+                
+                var editBtn = $('<button>').text('Edit');
+                    editBtn.click(function() {
+                        var row = $(this).closest('tr');
+                        var firstName = row.find('td').eq(0).text();
+                        var lastName = row.find('td').eq(1).text();
+                        var dob = row.find('td').eq(2).text();
+        
+                        $('#first-name').val(firstName);
+                        $('#last-name').val(lastName);
+                        $('#dob').val(dob);
+        
+                        row.remove();
+                    });
+                    newRow.append($('<td>').append(editBtn));
+				
+				// add delete button to new row
+				var deleteBtn = $('<button>').text('Delete');
+				deleteBtn.click(function() {
+					$(this).closest('tr').remove();
+				});
+				newRow.append($('<td>').append(deleteBtn));
+
+				$('#user-table').append(newRow);
+
+				// delete the fields
+				$('#first-name').val('');
+				$('#last-name').val('');
+				$('#dob').val('');
+			});
+
+			$('#delete-all-btn').click(function() {
+				$('#user-table tbody').empty();
+			});
+		});
+	</script>
+</head>
+<body>
+	<h2>User Details</h2>
+	<p>
+		<label>First Name:</label>
+		<input type="text" id="first-name">
+	</p>
+	<p>
+		<label>Last Name:</label>
+		<input type="text" id="last-name">
+	</p>
+	<p>
+		<label>Date of Birth:</label>
+			<input type="date" id="dob">
+	</p>
+	<button id="save-btn">Save</button>
+    <hr>
+	<table id="user-table" border=".3">
+		<thead>
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Date of Birth</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+</body>
+</html>
