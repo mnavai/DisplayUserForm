@@ -1,5 +1,7 @@
 body{
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(222, 222, 222);
+    
 }
 
 h2{
@@ -26,7 +28,7 @@ input {
 }
 
 #column{
-    background-color: rgb(208, 225, 228);
+    background-color: rgb(157, 210, 222);
 }
 
 /* th{

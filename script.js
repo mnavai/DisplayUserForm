@@ -2,10 +2,19 @@ $(document).ready(function() {
     var editRow = null;
   
     $('#save-btn').click(function() {
+      var regular = /^[A-Za-z]+$/g;
       var firstName = $('#first-name').val();
+      if (firstName == "" || !regular.test(firstName)) {
+          window.alert('Name cannot contain spaces, numbers, or special characters.');
+          return;
+      }
       var lastName = $('#last-name').val();
+      if(lastName == "" || !regular.test(lastName)){
+        window.alert('Last name cannot contain any spaces nor numbers');
+        return;
+      }
       var dob = $('#dob').val();
-  
+
       if (editRow) {
         // update existing row
         editRow.find('td').eq(0).text(firstName);
