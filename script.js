@@ -4,16 +4,29 @@ $(document).ready(function() {
     $('#save-btn').click(function() {
       var regular = /^[A-Za-z]+$/g;
       var firstName = $('#first-name').val();
+      var lastName = $('#last-name').val();
       if (firstName == "" || !regular.test(firstName)) {
           window.alert('Name cannot contain spaces, numbers, or special characters.');
           return;
       }
-      var lastName = $('#last-name').val();
-      if(lastName == "" || !regular.test(lastName)){
-        window.alert('Last name cannot contain any spaces nor numbers');
-        return;
+      if (lastName == "" || !regular.test(lastName)) {
+          window.alert('Last name cannot contain spaces, numbers, or special characters.');
+          return;
       }
+     
       var dob = $('#dob').val();
+      var today = new Date();
+      var birthDate = new Date(dob);
+      var age = today.getFullYear() - birthDate.getFullYear();
+      var m = today.getMonth() - birthDate.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+          age--;
+      }
+      if (age < 18) {
+          window.alert('You must be at least 18 years old to register');
+          return;
+      }
+
 
       if (editRow) {
         // update existing row
