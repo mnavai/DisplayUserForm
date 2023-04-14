@@ -26,11 +26,14 @@ $(document).ready(function() {
             window.alert('You must be at least 18 years old to register');
             return;
         }
+        var doj = $('#doj').val();
 
         var newRow = $('<tr>');
         newRow.append($('<td>').text(firstName));
         newRow.append($('<td>').text(lastName));
         newRow.append($('<td>').text(dob));
+        newRow.append($('<td>').text(doj));
+        
 
         // add edit button to new row
         var editBtn = $('<button>').text('Edit');
@@ -86,6 +89,7 @@ $(document).ready(function() {
         $('#first-name').val('');
         $('#last-name').val('');
         $('#dob').val('');
+        $('#doj').val('');
     });
 
     $('#delete-all-btn').click(function() {
